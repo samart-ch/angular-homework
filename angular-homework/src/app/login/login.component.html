@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="login-container">
+  <mat-card>
+    <mat-card-header>
+        <div mat-card-avatar class="header-image"></div>
+        <mat-card-title>Please login to continue</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+    </mat-card-header>
+ 
+    <mat-card-content>
+      <form name="formLogin" (ngSubmit)="onSubmit()">
+        <p></p>
+        <mat-form-field class="full-width-input">
+          <mat-label>User</mat-label>
+          <input matInput name="user" [(ngModel)]="form.username" />
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            autocomplete="on"
+            name="password"
+            [(ngModel)]="form.password"
+          />
+          <button
+            type="button"
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
