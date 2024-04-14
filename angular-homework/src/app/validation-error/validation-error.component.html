@@ -1,0 +1,6 @@
+<div *ngIf="control?.errors && submitted">
+      <mat-error *ngIf="control.errors?.['required']">{{messages['required']}}</mat-error>
+      <mat-error *ngIf="control.errors?.['minlength']">{{messages['minlength']}}</mat-error>
+      <mat-error *ngIf="control.errors?.['maxlength']">{{messages['maxlength']}}</mat-error>
+      <mat-error *ngIf="control.errors?.['email']">{{messages['email']}}</mat-error>
+</div>
