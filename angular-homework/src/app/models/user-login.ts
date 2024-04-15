@@ -18,7 +18,6 @@ export class BaseModel<T> {
     isSuccess: boolean;
     data: T | undefined;
     errors?: any;
-    test: string;
 
     constructor() {
         this.statusCode = 200;
@@ -26,7 +25,6 @@ export class BaseModel<T> {
         this.isSuccess = true;
         this.data;
         this.errors = null;
-        this.test = "ddd";
     }
 }
 

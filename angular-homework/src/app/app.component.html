@@ -6,7 +6,12 @@
     <span>Questionnaire</span>
     <span class="spacer"></span>
 
-    <button mat-button routerLink="login" class="login-button">Login</button>
+    <button mat-button routerLink="login" *ngIf="!authService.isLoggedIn" class="x-button">Login</button>
+  
+    <div *ngIf="authService.isLoggedIn">{{ authService.currentuserName }}</div>
+    <button mat-icon-button (click)="onLogout()" *ngIf="authService.isLoggedIn">
+      <mat-icon>logout</mat-icon>
+    </button>
       <!-- <button mat-button (click)="navigate('home')">Home</button>
       <button (click)="navigate('login')">Login</button> -->
 

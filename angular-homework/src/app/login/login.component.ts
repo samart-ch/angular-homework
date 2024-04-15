@@ -41,6 +41,13 @@ export class LoginComponent {
     private router: Router) {
   }
 
+  ngOnInit() {
+    if (this.authService.isLoggedIn) {
+      this.router.navigate(['/category']);
+    }
+  }
+
+
   onSubmit() {
 
     const { username, password } = this.form;
@@ -51,6 +58,8 @@ export class LoginComponent {
       next: data => {
         console.log(data);
         this.storageService.saveUser(data);
+      
+        this.authService.setUserValue('test');
         this.router.navigateByUrl('/category');
 
       },

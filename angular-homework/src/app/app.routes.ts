@@ -7,4 +7,5 @@ export const routes: Routes = [
 
     { path: 'login', component: LoginComponent },
     { path: 'category', component: QuestionCategoryListComponent , canActivate: [authGuard] },
+    { path: '**', redirectTo: 'category', pathMatch: 'full' }
 ];
