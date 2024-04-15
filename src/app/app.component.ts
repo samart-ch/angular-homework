@@ -6,6 +6,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './services/auth.service';
+import { environment } from '../environments/environment';
 
 
 @Component({
@@ -24,7 +25,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
 
   title = 'angular-homework';
-
+  isDebug = environment.production;
   constructor(
     public authService: AuthService,
     private router: Router) {}

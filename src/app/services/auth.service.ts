@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable  } from 'rxjs';
 import { StorageService } from './storage.service';
+import { environment } from '../../environments/environment';
 
 
 const AUTH_API = 'https://training-homework.calllab.net';
@@ -21,8 +22,9 @@ export class AuthService {
     private storage: StorageService) {}
 
   login(username: string, password: string): Observable<any> {
+
     return this.client.post(
-      AUTH_API + '/v1/login',
+      environment.apiEndpoint + '/v1/login',
       {
         username,
         password,

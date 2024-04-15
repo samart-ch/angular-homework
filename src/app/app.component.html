@@ -3,7 +3,7 @@
       <mat-icon>home</mat-icon>
     </button>
     
-    <span>Questionnaire</span>
+    <span>Questionnaire {{ isDebug }}</span>
     <span class="spacer"></span>
 
     <button mat-button routerLink="login" *ngIf="!authService.isLoggedIn" class="x-button">Login</button>
