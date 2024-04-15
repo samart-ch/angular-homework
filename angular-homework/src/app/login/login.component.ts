@@ -10,6 +10,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginForm } from '@app/models/login-form';
 import { AuthService } from '@app/services/auth.service';
 import { ValidationErrorComponent } from "@app/validation-error/validation-error.component";
+import { StorageService } from '@app/services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -33,13 +35,14 @@ export class LoginComponent {
   hide = true;
   form = new LoginForm();
 
-  constructor(private authService: AuthService,) {
-
+  constructor(
+    private authService: AuthService,
+    private storageService: StorageService,
+    private router: Router) {
   }
 
   onSubmit() {
 
-   
     const { username, password } = this.form;
     console.log(username);
     console.log(password);
@@ -47,6 +50,9 @@ export class LoginComponent {
     this.authService.login(username, password).subscribe({
       next: data => {
         console.log(data);
+        this.storageService.saveUser(data);
+        this.router.navigateByUrl('/category');
+
       },
       error: err => {
         console.error(err);
