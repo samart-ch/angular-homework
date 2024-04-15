@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { LoginForm } from '@app/models/login-form';
-import { BaseModel, UserLogin } from '@app/models/user-login';
+import { BaseModel } from '@app/models/base-model';
+import { UserLogin } from '@app/models/user-login';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({

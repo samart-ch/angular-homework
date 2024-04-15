@@ -1,5 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BaseModel } from '@app/models/base-model';
+import { QuestionList } from '@app/models/question-list';
+import { Questionnaire } from '@app/models/questionnaire';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
@@ -16,10 +19,18 @@ export class QuestionService {
   constructor(
     private client: HttpClient) { }
 
-    getQuestionCategoryList(): Observable<any> {
+    getQuestionCategoryList(): Observable<BaseModel<QuestionList[]>> {
 
-      return this.client.get(
+      return this.client.get<BaseModel<QuestionList[]>>(
         environment.apiEndpoint + '/v1/questions/categories',
+        httpOptions
+      );
+    }
+
+    getQuestionByCategoryId(categoryId: string): Observable<BaseModel<Questionnaire>> {
+
+      return this.client.get<BaseModel<Questionnaire>>(
+        environment.apiEndpoint + `/v1/questions/categories/${categoryId}`,
         httpOptions
       );
     }

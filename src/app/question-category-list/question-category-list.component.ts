@@ -6,6 +6,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
 import {DatePipe} from '@angular/common';
 import {MatListModule} from '@angular/material/list';
+import { Route, Router } from '@angular/router';
 
 
 
@@ -21,32 +22,24 @@ export class QuestionCategoryListComponent {
   questionList: QuestionList[] = [];
 
   constructor(
+    private router: Router,
     private questionService: QuestionService) {}
 
     ngOnInit() {
       
       this.questionService.getQuestionCategoryList().subscribe({
         next: (data: BaseModel<QuestionList[]>) => {
-        
           this.questionList = data.data!;
-          console.log(this.questionList);
-  
+          console.log('question-category-list : ' + JSON.stringify(this.questionList));
         },
         error: err => {
           console.error(err);
           console.log(err);
         }
       });
-
-
     }
 
-    redirectTo(url: string) {
-      alert(url);
-
+    redirectTo(id: string) {
+      this.router.navigateByUrl(`/questionnaire/${id}`);
     }
-
-    
-
-
 }
