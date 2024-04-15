@@ -43,6 +43,10 @@ export class AuthService {
     return this.storage.getUser() !== null;
   }
 
+  public get getToken(): string | undefined {
+    return this.storage.getUser().data?.accessToken;
+  }
+
   public setUserValue(user: string): void {
     this.currentUserSubject.next(user);
   }
