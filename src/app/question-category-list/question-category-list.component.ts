@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { QuestionList } from '@app/models/question-list';
-import { BaseModel } from '@app/models/user-login';
+import { BaseModel } from '@app/models/base-model';
 import { QuestionService } from '@app/services/question.service';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatIconModule} from '@angular/material/icon';
