@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable  } from 'rxjs';
+import { StorageService } from './storage.service';
 
 
 const AUTH_API = 'https://training-homework.calllab.net';
@@ -13,7 +14,8 @@ const httpOptions = {
 })
 export class AuthService {
   
-  constructor(private client: HttpClient) {}
+  constructor(
+    private client: HttpClient) {}
 
   login(username: string, password: string): Observable<any> {
     return this.client.post(
@@ -25,5 +27,8 @@ export class AuthService {
       httpOptions
     );
   }
+
+
+
 
 }
