@@ -142,50 +142,6 @@ export class QuestionnaireComponent {
         console.log(err);
       },
     });
-  
-
-
-//   let answerData: Answer[] = [];
-
-
-// let questions:Question[] = []
-
-//     for (const answer of this.selectionAnswer) {
-    
-//       let questionId = ''
-//       if(answer.questionId != questionId) {
-//         questionId = answer.questionId
-//         let questionsData: Question = {
-//           questionId: questionId,
-//         };
-//         questions = [...questions, questionsData]
-//       }
-//     }
-
-//    let newQuestion : Question[] = []
-//     for(let i =0 ; i < questions.length; i++) {
-      
-//       const answers = this.selectionAnswer.filter( x => x.questionId === questions[i].questionId)
-//       for(const answer of answers) {
-//           const answerNew: Answer = {
-//             questionAnswerId: answer.questionAnswerId
-//           }
-//           answerData = [...answerData,answerNew]
-//         }
-//         questions[i].answers =answerData        
-//         newQuestion = [...newQuestion,questions[i]]
-//     }
-//     let request: SubmitAssignment = {
-//       questionCategoryId: '',
-//       questions: newQuestion,
-//     };
-
-//     console.log('request  >> ', request)
-
-    // console.log(this.submitAssignmentForm.value);
-    // const answersArray = this.questionnaireForm.get('answers') as FormArray;
-
-    // console.log(answersArray);
   }
 
   handleUpdate($updatedData: number) {
@@ -193,8 +149,7 @@ export class QuestionnaireComponent {
 
     if ($updatedData == 0) {
       alert('TimeUp');
-      //this.onSubmit();
-      this.router.navigateByUrl('/category');
+      this.onSubmit();
     }
   }
 }

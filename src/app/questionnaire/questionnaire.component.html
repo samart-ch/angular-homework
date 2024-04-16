@@ -1,7 +1,7 @@
 <div><p class="title">{{questionnaire.title}}</p></div>
 
 <div *ngIf="questionnaire.timeLimitOfMinuteUnit > 0">
-    <app-count-down [seconds]="questionnaire.timeLimitOfMinuteUnit * 60" (update)="handleUpdate($event)"></app-count-down>
+    <app-count-down class="center" [seconds]="questionnaire.timeLimitOfMinuteUnit * 60" (update)="handleUpdate($event)"></app-count-down>
 </div>
 
 <form>
