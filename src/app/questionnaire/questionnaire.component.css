@@ -1,0 +1,25 @@
+/* Styles for the mat-selection-list */
+mat-selection-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px; /* Adjust the width as needed */
+    margin: 50px auto 0 auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+    border-radius: 10px; /* rounded corners */
+    background-color: #fff; /* change to your preferred color */
+  }
+  
+  /* Styles for the mat-list-option */
+  mat-list-option {
+    /* Add your styles here */
+    padding: 10px;
+    margin: 5px;
+    background-color: #f7f7f7;
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
