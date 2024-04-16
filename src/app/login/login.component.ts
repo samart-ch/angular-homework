@@ -12,6 +12,8 @@ import { AuthService } from '@app/services/auth.service';
 import { ValidationErrorComponent } from "@app/validation-error/validation-error.component";
 import { StorageService } from '@app/services/storage.service';
 import { Router } from '@angular/router';
+import { BaseModel, ModelError } from '@app/models/base-model';
+import { UserLogin } from '@app/models/user-login';
 
 @Component({
     selector: 'app-login',
@@ -34,6 +36,7 @@ export class LoginComponent {
 
   hide = true;
   form = new LoginForm();
+  messageError: string = '';
 
   constructor(
     private authService: AuthService,
@@ -55,20 +58,17 @@ export class LoginComponent {
     console.log(password);
 
     this.authService.login(username, password).subscribe({
-      next: data => {
+      next: (data: BaseModel<UserLogin>) => {
         console.log(data);
         this.storageService.saveUser(data);
-      
-        this.authService.setUserValue('test');
         this.router.navigateByUrl('/category');
 
       },
-      error: err => {
-        console.error(err);
-        console.log(err);
+      error: (err: any) => {
+        const errorResponse = err.error as BaseModel<ModelError[]>;
+        this.messageError = errorResponse.errors[0].key + ' ' + errorResponse.errors[0].message
       }
     });
-
   }
 
 }

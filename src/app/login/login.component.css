@@ -15,3 +15,7 @@ mat-card {
   background-image: url(https://gravatar.com/avatar/b5ad39eb92e35b4ffcfc76da79b2c99f?s=400&d=wavatar&r=x);
   background-size: cover;
 }
+
+mat-error {
+  text-align: left;
+}

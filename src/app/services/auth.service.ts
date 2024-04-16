@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable  } from 'rxjs';
 import { StorageService } from './storage.service';
 import { environment } from '../../environments/environment';
+import { BaseModel } from '@app/models/base-model';
+import { UserLogin } from '@app/models/user-login';
 
 
 const AUTH_API = 'https://training-homework.calllab.net';
@@ -21,9 +23,9 @@ export class AuthService {
     private client: HttpClient,
     private storage: StorageService) {}
 
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<BaseModel<UserLogin>> {
 
-    return this.client.post(
+    return this.client.post<BaseModel<UserLogin>>(
       environment.apiEndpoint + '/v1/login',
       {
         username,

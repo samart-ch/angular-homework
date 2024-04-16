@@ -3,13 +3,18 @@ export class BaseModel<T> {
     statusMessage: string;
     isSuccess: boolean;
     data: T | undefined;
-    errors?: any;
+    errors: ModelError[];
 
     constructor() {
         this.statusCode = 200;
         this.statusMessage = "";
         this.isSuccess = true;
         this.data;
-        this.errors = null;
+        this.errors = [];
     }
 }
+
+export interface ModelError {
+    key: string
+    message: string
+  }
