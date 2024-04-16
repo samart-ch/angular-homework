@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BaseModel } from '@app/models/base-model';
 import { QuestionList } from '@app/models/question-list';
 import { Questionnaire } from '@app/models/questionnaire';
+import { SubmitAssignment } from '@app/models/submit-assignment';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
@@ -33,6 +34,15 @@ export class QuestionService {
         environment.apiEndpoint + `/v1/questions/categories/${categoryId}`,
         httpOptions
       );
+    }
+
+    submitAssignment(request: SubmitAssignment): Observable<any> {
+      
+      return this.client.post<SubmitAssignment>(
+        environment.apiEndpoint + `/v1/questions/submit-assignment`, request ,
+        httpOptions
+      );
+
     }
   
 }
