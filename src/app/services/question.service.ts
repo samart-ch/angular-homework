@@ -4,6 +4,7 @@ import { BaseModel } from '@app/models/base-model';
 import { QuestionList } from '@app/models/question-list';
 import { Questionnaire } from '@app/models/questionnaire';
 import { SubmitAssignment } from '@app/models/submit-assignment';
+import { SummaryData } from '@app/models/summary-data';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
@@ -36,9 +37,9 @@ export class QuestionService {
       );
     }
 
-    submitAssignment(request: SubmitAssignment): Observable<any> {
+    submitAssignment(request: SubmitAssignment): Observable<BaseModel<SummaryData>> {
       
-      return this.client.post<SubmitAssignment>(
+      return this.client.post<BaseModel<SummaryData>>(
         environment.apiEndpoint + `/v1/questions/submit-assignment`, request ,
         httpOptions
       );

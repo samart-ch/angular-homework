@@ -3,7 +3,7 @@
       <mat-icon>home</mat-icon>
     </button>
     
-    <span>Questionnaire {{ isDebug }}</span>
+    <span *ngIf="!isDebug" >IsDebug : {{ !isDebug }}</span>
     <span class="spacer"></span>
 
     <button mat-button routerLink="login" *ngIf="!authService.isLoggedIn" class="x-button">Login</button>
@@ -12,14 +12,7 @@
     <button mat-icon-button (click)="onLogout()" *ngIf="authService.isLoggedIn">
       <mat-icon>logout</mat-icon>
     </button>
-      <!-- <button mat-button (click)="navigate('home')">Home</button>
-      <button (click)="navigate('login')">Login</button> -->
-
-<!--     
-    <button mat-icon-button>
-      <mat-icon>login</mat-icon>
-    </button> -->
-
+     
     <button mat-icon-button>
       <mat-icon>share</mat-icon>
     </button>

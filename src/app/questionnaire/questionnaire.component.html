@@ -1,4 +1,4 @@
-<p>questionnaire works!</p>
+<div><p class="title">{{questionnaire.title}}</p></div>
 
 <div *ngIf="questionnaire.timeLimitOfMinuteUnit > 0">
     <app-count-down [seconds]="questionnaire.timeLimitOfMinuteUnit * 60" (update)="handleUpdate($event)"></app-count-down>
@@ -28,4 +28,3 @@
   </mat-stepper> 
 
 </form>
-

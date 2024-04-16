@@ -1,0 +1,17 @@
+/* CSS */
+.score-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+    font-size: 2em; /* Adjust size as needed */
+    font-weight: bold; /* Bold text */
+    color: black; /* Red color text */
+  }
+
+.x-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}

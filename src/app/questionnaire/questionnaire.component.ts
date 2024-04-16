@@ -4,16 +4,13 @@ import { CountDownComponent } from '@app/count-down/count-down.component';
 import { BaseModel } from '@app/models/base-model';
 import { Questionnaire } from '@app/models/questionnaire';
 import { QuestionService } from '@app/services/question.service';
-import {
-  FormBuilder,
-  FormsModule,
-  ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonModule } from '@angular/material/button';
-import { CommonModule, KeyValuePipe } from '@angular/common';
-import { MatListModule, MatSelectionListChange } from '@angular/material/list';
+import { CommonModule } from '@angular/common';
+import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import {
   Answer,
@@ -21,6 +18,7 @@ import {
   SelectionAnswer,
   SubmitAssignment,
 } from '@app/models/submit-assignment';
+import { SummaryData } from '@app/models/summary-data';
 
 @Component({
   selector: 'app-questionnaire',
@@ -56,13 +54,13 @@ export class QuestionnaireComponent {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     
     this.id = this.activatedRoute.snapshot.paramMap.get('id') ?? '';
     this.questionService.getQuestionByCategoryId(this.id).subscribe({
       next: (data: BaseModel<Questionnaire>) => {
         this.questionnaire = data.data!;
-        // console.log('question : ' + JSON.stringify(this.questionnaire));
+        console.log('question : ' + JSON.stringify(this.questionnaire));
       },
       error: (err) => {
         console.error(err);
@@ -129,9 +127,15 @@ export class QuestionnaireComponent {
     requestData.questions = questionData
 
     this.questionService.submitAssignment(requestData).subscribe({
-      next: (data: any) => {
+      next: (data: BaseModel<SummaryData>) => {
         
         console.log('submitAssignment : ' + JSON.stringify(data));
+        this.router.navigate(['/summary'], {
+          queryParams: {
+            fullScore: data.data?.fullScore,
+            score: data.data?.score
+          } 
+        });
       },
       error: (err) => {
         console.error(err);
